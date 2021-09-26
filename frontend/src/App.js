@@ -11,8 +11,7 @@ import {Route, BrowserRouter} from 'react-router-dom';
 
 let RenderProfile = (props) => {
   return <Profile profilePage={props.state.profilePage} 
-                  addPost={props.addPost} 
-                  updateNewPostText={props.updateNewPostText} />
+                  dispatch={props.dispatch} />
 }
 
 let RenderDialogs = (props) => {
