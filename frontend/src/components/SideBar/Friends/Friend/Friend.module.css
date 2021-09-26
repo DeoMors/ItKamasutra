@@ -1,0 +1,15 @@
+.friend {
+    color: white;
+}
+
+.friend img {
+    border-radius: 20px;
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+    display: block;
+}
+
+.friendName {
+    text-align: center;
+}
