@@ -15,7 +15,8 @@ let RenderProfile = (props) => {
 }
 
 let RenderDialogs = (props) => {
-  return <Dialogs state={props.state.dialogsPage} />
+  return <Dialogs state={props.state.dialogsPage} 
+                  dispatch={props.dispatch} />
 }
 
 const App = (props) => {
