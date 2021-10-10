@@ -3,20 +3,18 @@ import './App.css';
 import Header from './components/Header/Header';
 import Sidebar from './components/SideBar/Sidebar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import {Route, BrowserRouter} from 'react-router-dom';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 let RenderProfile = (props) => {
-  return <Profile profilePage={props.state.profilePage} 
-                  dispatch={props.dispatch} />
+  return <Profile store={props.store} />
 }
 
 let RenderDialogs = (props) => {
-  return <Dialogs state={props.state.dialogsPage} 
-                  dispatch={props.dispatch} />
+  return <DialogsContainer store={props.store} />
 }
 
 const App = (props) => {
