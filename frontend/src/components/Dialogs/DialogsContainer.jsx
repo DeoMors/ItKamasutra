@@ -8,7 +8,7 @@ let mapStateToProps = (state) => {
     };
 }
 
-let mapDispatchToProps = () => {
+let mapDispatchToProps = (dispatch) => {
     return {
         sendMessage: () => {
             dispatch(sendMessageActionCreator());
