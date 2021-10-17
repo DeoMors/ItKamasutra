@@ -10,11 +10,11 @@ import {Route, BrowserRouter} from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 let RenderProfile = (props) => {
-  return <Profile store={props.store} />
+  return <Profile />
 }
 
 let RenderDialogs = (props) => {
-  return <DialogsContainer store={props.store} />
+  return <DialogsContainer />
 }
 
 const App = (props) => {
