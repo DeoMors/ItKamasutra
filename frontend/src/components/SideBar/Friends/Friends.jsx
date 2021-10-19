@@ -6,8 +6,8 @@ const Friends = (props) => {
     let friends = props.friendsData.map(f => <Friend name={f.name} />);
 
     return (
-        <div className={classes.friendsWrapper}>
-            <h3>Друзья</h3>
+        <div>
+            <div className={classes.friendsHeader}>Друзья</div>
             <div className={classes.friends}>
                 {friends}
             </div>

@@ -11,3 +11,7 @@
 .item a.active {
     color: #EB5E28;
 }
+
+.item:not(.bottomItem) + .bottomItem {
+    margin-top: 50px;
+}

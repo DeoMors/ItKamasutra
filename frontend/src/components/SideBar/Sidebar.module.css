@@ -1,3 +1,8 @@
-.sidebar {
+.sidebar > * {
     background-color: #403D39;
+    margin-bottom: 20px;
+}
+
+.sidebar > *:last-child {
+    margin-bottom: 0;
 }

@@ -1,12 +1,11 @@
-.friendsWrapper {
-    padding: 20px;
-}
-
-.friendsWrapper h3 {
+.friendsHeader {
+    background-color: #605e5b;
     color: #EB5E28;
+    padding: 10px 20px;
 }
 
 .friends {
     display: grid;
     grid-template-areas: "f f f";
+    padding: 20px;
 }
