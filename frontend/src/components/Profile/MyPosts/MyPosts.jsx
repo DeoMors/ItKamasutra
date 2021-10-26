@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './MyPosts.module.css';
+import styles from './MyPosts.module.css';
 import Post from './Post/Post.jsx'
 
 const MyPosts = (props) => {
@@ -18,7 +18,7 @@ const MyPosts = (props) => {
     }
     
     return (
-        <div className={classes.postsBlock}>
+        <div className={styles.postsBlock}>
             <h2>My posts</h2>
             <div>
                 <div>
@@ -28,7 +28,7 @@ const MyPosts = (props) => {
                     <button onClick={addPost}>Add post</button>
                 </div>
             </div>
-            <div className={classes.posts}>
+            <div className={styles.posts}>
                 { postsElements }
             </div>
         </div>

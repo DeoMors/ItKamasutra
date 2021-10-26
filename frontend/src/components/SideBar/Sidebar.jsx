@@ -1,11 +1,11 @@
 import React from 'react';
 import Friends from './Friends/Friends';
 import Navbar from './Navbar/Navbar';
-import classes from './Sidebar.module.css';
+import styles from './Sidebar.module.css';
 
 const Sidebar = (props) => {
     return (
-        <div className={classes.sidebar}>
+        <div className={styles.sidebar}>
             <Navbar />
             <Friends friendsData={props.state.friendsData} />
         </div>
