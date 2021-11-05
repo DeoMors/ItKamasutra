@@ -3,7 +3,6 @@ import styles from './User.module.css'
 import userPhoto from '../../../assets/images/User.png'
 
 const User = (props) => {
-    debugger;
     return (
         <div>
             <div>
