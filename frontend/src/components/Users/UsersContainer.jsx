@@ -1,26 +1,26 @@
 import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
-import { setUsersActionCreator, toggleFollowActionCreator, setCurrentPageActionCreator, setTotalUsersCountActionCreator, toggleLoaderActionCreator } from '../../redux/UsersReducer';
+import { setUsers, toggleFollow, setCurrentPage, setTotalUsersCount, togglePreloader } from '../../redux/UsersReducer';
 import Preloader from '../Shared/Preloader/Preloader';
 import Users from './Users';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.toggleIsLoader(true);
+        this.props.togglePreloader(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.setTotalUsersCount(response.data.totalCount)
             this.props.setUsers(response.data.items);
-            this.props.toggleIsLoader(false);
+            this.props.togglePreloader(false);
         });
     }
 
     onPageClick = (pageNumber) => {
-        this.props.toggleIsLoader(true);
+        this.props.togglePreloader(true);
         this.props.setCurrentPage(pageNumber);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items);
-            this.props.toggleIsLoader(false);
+            this.props.togglePreloader(false);
         });
     };
 
@@ -47,24 +47,12 @@ let mapStateToProps = (state) => {
     };
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        toggleFollow: (userId) => {
-            dispatch(toggleFollowActionCreator(userId));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersActionCreator(users));
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageActionCreator(pageNumber));
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(setTotalUsersCountActionCreator(totalCount));
-        },
-        toggleIsLoader: (isLoading) => {
-            dispatch(toggleLoaderActionCreator(isLoading));
-        }
-    };
-}
+let mapDispatchToProps = {
+    toggleFollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    togglePreloader
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);;

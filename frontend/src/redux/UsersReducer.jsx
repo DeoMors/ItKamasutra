@@ -70,10 +70,10 @@ const usersReducer = (state = initialState, action) => {
     }
 };
 
-export const toggleFollowActionCreator = (userId) => ({ type: TOGGLE_FOLLOW, userId });
-export const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
-export const setCurrentPageActionCreator = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
-export const setTotalUsersCountActionCreator = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
-export const toggleLoaderActionCreator = (isLoading) => ({ type: TOGGLE_LOADER, isLoading });
+export const toggleFollow = (userId) => ({ type: TOGGLE_FOLLOW, userId });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const setTotalUsersCount = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
+export const togglePreloader = (isLoading) => ({ type: TOGGLE_LOADER, isLoading });
 
 export default usersReducer;
