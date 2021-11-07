@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Sidebar from './components/SideBar/Sidebar';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
@@ -19,7 +19,7 @@ const App = (props) => {
         <Sidebar state={props.state.sidebar} />
         <div className='app-wrapper-content'>
           <Route path='/dialogs' render={ () => <DialogsContainer /> } />
-          <Route path='/profile' render={ () => <Profile /> } />
+          <Route path='/profile' render={ () => <ProfileContainer /> } />
           <Route path='/users' render={ () => <UsersContainer /> } />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
