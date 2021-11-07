@@ -1,32 +1,39 @@
 import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
-import { setUsersActionCreator, toggleFollowActionCreator, setCurrentPageActionCreator, setTotalUsersCountActionCreator } from '../../redux/UsersReducer';
+import { setUsersActionCreator, toggleFollowActionCreator, setCurrentPageActionCreator, setTotalUsersCountActionCreator, toggleLoaderActionCreator } from '../../redux/UsersReducer';
+import Preloader from '../Shared/Preloader/Preloader';
 import Users from './Users';
-
 
 class UsersContainer extends React.Component {
     componentDidMount() {
+        this.props.toggleIsLoader(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.setTotalUsersCount(response.data.totalCount)
             this.props.setUsers(response.data.items);
+            this.props.toggleIsLoader(false);
         });
     }
 
     onPageClick = (pageNumber) => {
+        this.props.toggleIsLoader(true);
         this.props.setCurrentPage(pageNumber);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items);
+            this.props.toggleIsLoader(false);
         });
     };
 
     render() {
-        return <Users totalUsersCount={this.props.totalUsersCount}
+        return <>
+            {this.props.isLoading ? <Preloader /> : null };
+            <Users totalUsersCount={this.props.totalUsersCount}
                       pageSize={this.props.pageSize}
                       currentPage={this.props.currentPage}
                       onPageClick={this.onPageClick}
                       users={this.props.users}
                       toggleFollow={this.props.toggleFollow} />;
+        </>
     }
 }
 
@@ -35,7 +42,8 @@ let mapStateToProps = (state) => {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage
+        currentPage: state.usersPage.currentPage,
+        isLoading: state.usersPage.isLoading
     };
 }
 
@@ -52,6 +60,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setTotalUsersCount: (totalCount) => {
             dispatch(setTotalUsersCountActionCreator(totalCount));
+        },
+        toggleIsLoader: (isLoading) => {
+            dispatch(toggleLoaderActionCreator(isLoading));
         }
     };
 }

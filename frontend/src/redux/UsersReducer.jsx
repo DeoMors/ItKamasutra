@@ -2,12 +2,14 @@ const TOGGLE_FOLLOW = "TOGGLE_FOLLOW";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
+const TOGGLE_LOADER = "TOGGLE_LOADER"
 
 let initialState = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isLoading: true
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -54,6 +56,15 @@ const usersReducer = (state = initialState, action) => {
             return stateCopy;
         }
 
+        case TOGGLE_LOADER: {
+            let stateCopy = {
+                ...state,
+                isLoading: action.isLoading
+            };
+
+            return stateCopy;
+        }
+
         default: 
             return state;
     }
@@ -63,5 +74,6 @@ export const toggleFollowActionCreator = (userId) => ({ type: TOGGLE_FOLLOW, use
 export const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
 export const setCurrentPageActionCreator = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 export const setTotalUsersCountActionCreator = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
+export const toggleLoaderActionCreator = (isLoading) => ({ type: TOGGLE_LOADER, isLoading });
 
 export default usersReducer;
