@@ -1,3 +1,21 @@
-.descriptionBlock {
+.description {
     padding: 10px;
+    position: relative;
+    height: 100px;
+}
+
+.profileBackground {
+    height: 200px;
+    width: 100%;
+}
+
+.avatar {
+    border-radius: 50%;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 0; 
+    right: 0; 
+    margin: 0 auto; 
+    top: -100px;
 }
